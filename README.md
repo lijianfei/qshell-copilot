@@ -4,6 +4,7 @@
 
 **Manage Qiniu Cloud Storage with natural language in your AI-powered IDE.**
 
+[![Release](https://img.shields.io/github/v/release/lijianfei/qshell-copilot)](https://github.com/lijianfei/qshell-copilot/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![qshell](https://img.shields.io/badge/qshell-v2.x-green.svg)](https://github.com/qiniu/qshell)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](#-quick-start)
@@ -23,6 +24,7 @@ An AI coding assistant prompt (Skill) that wraps [qshell](https://github.com/qin
 
 - [✨ Features](#-features)
 - [⚙️ How It Works](#️-how-it-works)
+- [📥 Install](#-install)
 - [🚀 Quick Start](#-quick-start)
 - [📁 Project Structure](#-project-structure)
 - [📊 Benchmark](#-benchmark)
@@ -90,6 +92,38 @@ You say: "Upload ./assets/ to my-bucket with prefix v2/"
 - **Error diagnosis** — Recognizes 7 common error patterns (invalid account, no such bucket, file exists, etc.) and guides recovery instead of showing raw errors.
 - **Key inference** — When no remote path is specified, auto-uses the local filename. When a directory prefix is given (e.g. `images/`), concatenates it as `images/filename.ext`.
 
+## 📥 Install
+
+**Option A — skills.sh** (works with 41+ AI agents)
+
+```bash
+npx skills add lijianfei/qshell-copilot
+```
+
+**Option B — ClawHub**
+
+```bash
+clawhub install qshell-copilot
+```
+
+**Option C — Manual**
+
+Copy `.claude/skills/qiniu/` into your project:
+
+```
+your-project/
+└── .claude/
+    └── skills/
+        └── qiniu/
+            ├── SKILL.md              ← Core skill (commands, workflows, error handling)
+            └── references/
+                ├── install-guide.md   ← Platform install instructions
+                └── batch-download.md  ← Batch download config format
+```
+
+> **Using Cursor, Windsurf, or other AI IDEs?**
+> Copy the content of `SKILL.md` into your project's custom rules file (`.cursorrules`, `.windsurfrules`, or equivalent).
+
 ## 🚀 Quick Start
 
 ### 1. Install qshell
@@ -139,23 +173,9 @@ qshell account <AccessKey> <SecretKey> <Name>
 
 Get your AK/SK from [Qiniu Console → Key Management](https://portal.qiniu.com/user/key).
 
-### 3. Add to your project
+### 3. Add the skill to your project
 
-Copy `.claude/skills/qiniu/` into your project:
-
-```
-your-project/
-└── .claude/
-    └── skills/
-        └── qiniu/
-            ├── SKILL.md              ← Core skill (commands, workflows, error handling)
-            └── references/
-                ├── install-guide.md   ← Platform install instructions
-                └── batch-download.md  ← Batch download config format
-```
-
-> 💡 **Using Cursor, Windsurf, or other AI IDEs?**
-> Copy the content of `SKILL.md` into your project's custom rules file (`.cursorrules`, `.windsurfrules`, or equivalent).
+See [📥 Install](#-install) above for all installation methods.
 
 ## 📁 Project Structure
 

@@ -4,6 +4,7 @@
 
 **在 AI 编程助手中用自然语言管理七牛云存储。**
 
+[![Release](https://img.shields.io/github/v/release/lijianfei/qshell-copilot)](https://github.com/lijianfei/qshell-copilot/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![qshell](https://img.shields.io/badge/qshell-v2.x-green.svg)](https://github.com/qiniu/qshell)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](#-快速开始)
@@ -23,6 +24,7 @@
 
 - [✨ 功能一览](#-功能一览)
 - [⚙️ 工作原理](#️-工作原理)
+- [📥 安装 Skill](#-安装-skill)
 - [🚀 快速开始](#-快速开始)
 - [📁 项目结构](#-项目结构)
 - [📊 评测结果](#-评测结果)
@@ -90,6 +92,38 @@
 - **错误诊断** — 识别 7 种常见错误模式（认证失效、空间不存在、文件已存在等），自动引导修复而非展示原始报错
 - **路径推断** — 未指定远程路径时自动用本地文件名；指定了目录前缀（如 `images/`）时自动拼接为 `images/文件名`
 
+## 📥 安装 Skill
+
+**方式 A — skills.sh**（支持 41+ AI 智能体）
+
+```bash
+npx skills add lijianfei/qshell-copilot
+```
+
+**方式 B — ClawHub**
+
+```bash
+clawhub install qshell-copilot
+```
+
+**方式 C — 手动复制**
+
+将 `.claude/skills/qiniu/` 目录复制到你的项目中：
+
+```
+your-project/
+└── .claude/
+    └── skills/
+        └── qiniu/
+            ├── SKILL.md              ← 核心 Skill（命令参考、工作流、错误处理）
+            └── references/
+                ├── install-guide.md   ← 各平台安装指南
+                └── batch-download.md  ← 批量下载配置格式
+```
+
+> **用的是 Cursor、Windsurf 或其他 AI IDE？**
+> 把 `SKILL.md` 的内容复制到项目的自定义规则文件中（`.cursorrules`、`.windsurfrules` 等）。
+
 ## 🚀 快速开始
 
 ### 1. 安装 qshell
@@ -139,23 +173,9 @@ qshell account <AccessKey> <SecretKey> <账号名>
 
 AK/SK 在 [七牛控制台 → 密钥管理](https://portal.qiniu.com/user/key) 获取。
 
-### 3. 添加到项目
+### 3. 添加 Skill 到项目
 
-将 `.claude/skills/qiniu/` 目录复制到你的项目中：
-
-```
-your-project/
-└── .claude/
-    └── skills/
-        └── qiniu/
-            ├── SKILL.md              ← 核心 Skill（命令参考、工作流、错误处理）
-            └── references/
-                ├── install-guide.md   ← 各平台安装指南
-                └── batch-download.md  ← 批量下载配置格式
-```
-
-> 💡 **用的是 Cursor、Windsurf 或其他 AI IDE？**
-> 把 `SKILL.md` 的内容复制到项目的自定义规则文件中（`.cursorrules`、`.windsurfrules` 等）。
+参见上方 [📥 安装 Skill](#-安装-skill) 的各种安装方式。
 
 ## 📁 项目结构
 
