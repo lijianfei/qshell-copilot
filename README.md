@@ -37,16 +37,19 @@ An AI coding assistant prompt (Skill) that wraps [qshell](https://github.com/qin
  "Delete temp/debug.log from production"      →  shows file info first, waits for confirmation
  "Refresh CDN cache for these URLs"           →  writes URL file, runs cdnrefresh
  "Generate a private download link"           →  qshell privateurl with deadline
+ "Help me install qshell"                     →  platform-specific guided installation
 ```
 
 | Category | Operations |
 |----------|-----------|
-| 📤 **Upload** | Single file (auto fput/rput by size), batch directory upload, resume on failure |
+| 📤 **Upload** | Single file (auto fput/rput by size), batch directory upload, overwrite, resume on failure |
 | 📥 **Download** | Single file, batch download with config |
-| 📂 **File Ops** | List, stat, delete (with safety confirmation), copy, move/rename |
-| 🪣 **Bucket** | List all buckets, view domains, create new bucket with region |
+| 📂 **File Ops** | List, file info (stat), delete (with safety confirmation), copy, move/rename |
+| 🪣 **Bucket** | List all buckets, view bound domains, create new bucket (6 regions) |
 | 🌐 **CDN** | Cache refresh (URLs & directories), prefetch, private download links |
 | 🔗 **Network** | Fetch remote URL directly into bucket |
+| 🛠️ **Setup** | Guided qshell installation (Windows/macOS/Linux), credential configuration |
+| 🧠 **Smart** | Auto key-path inference, file-size-based upload method, error diagnosis with guided recovery |
 
 ## ⚙️ How It Works
 
@@ -84,6 +87,8 @@ You say: "Upload ./assets/ to my-bucket with prefix v2/"
 - **Delete protection** — Always runs `qshell stat` and shows file details before deletion. Waits for your explicit "yes".
 - **Auth check** — Uses `qshell user ls` (read-only) instead of `qshell account` (which exposes credentials in terminal history).
 - **Smart upload** — Checks file size to choose `fput` (<100MB) or `rput` (≥100MB, resumable). No wasted bandwidth on retry.
+- **Error diagnosis** — Recognizes 7 common error patterns (invalid account, no such bucket, file exists, etc.) and guides recovery instead of showing raw errors.
+- **Key inference** — When no remote path is specified, auto-uses the local filename. When a directory prefix is given (e.g. `images/`), concatenates it as `images/filename.ext`.
 
 ## 🚀 Quick Start
 
