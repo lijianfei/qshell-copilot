@@ -1,0 +1,16 @@
+# Workspace (eval outputs, benchmarks, viewer HTML)
+qiniu-kodo-workspace/
+
+# qshell local cache
+.qshell/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
